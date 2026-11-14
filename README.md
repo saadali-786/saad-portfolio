@@ -12,6 +12,7 @@ A responsive portfolio for AI systems, workflow design, decision intelligence, a
 
 Project cards link to public repositories under the GitHub account saadali-786. They are described as system concepts, research resources, learning guides, or web experiences according to the source repository.
 
-## Publish with GitHub Pages
+## Live site
 
-Create the repository saadali-786.github.io, add the three site files to its root, and choose the main branch and root folder in Settings → Pages.
+GitHub Pages publishes this project from the `main` branch and repository root:
+https://saadali-786.github.io/saad-portfolio/
