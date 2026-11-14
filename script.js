@@ -40,3 +40,44 @@ if (!reduceMotion && "IntersectionObserver" in window) {
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
+
+
+const projectSearch = document.querySelector("#project-search");
+const archiveGrid = document.querySelector("#archive-grid");
+const visibleProjectCount = document.querySelector("#visible-project-count");
+const archiveEmpty = document.querySelector("#archive-empty");
+
+if (projectSearch && archiveGrid && visibleProjectCount && archiveEmpty) {
+  const archiveCards = [...archiveGrid.querySelectorAll(".archive-card")];
+  const filterButtons = [...document.querySelectorAll(".filter-button[data-filter]")];
+  let activeCategory = "all";
+
+  const updateArchive = () => {
+    const query = projectSearch.value.trim().toLowerCase();
+    let visible = 0;
+
+    archiveCards.forEach((card) => {
+      const matchesCategory = activeCategory === "all" || card.dataset.category === activeCategory;
+      const searchable = `${card.dataset.search || ""} ${card.textContent}`.toLowerCase();
+      const matchesSearch = !query || searchable.includes(query);
+      card.hidden = !(matchesCategory && matchesSearch);
+      if (!card.hidden) visible += 1;
+    });
+
+    visibleProjectCount.textContent = String(visible);
+    archiveEmpty.hidden = visible > 0;
+  };
+
+  projectSearch.addEventListener("input", updateArchive);
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.filter;
+      filterButtons.forEach((filterButton) => {
+        const isActive = filterButton === button;
+        filterButton.classList.toggle("is-active", isActive);
+        filterButton.setAttribute("aria-pressed", String(isActive));
+      });
+      updateArchive();
+    });
+  });
+}
