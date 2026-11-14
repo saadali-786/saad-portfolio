@@ -323,3 +323,38 @@ h2 { font-size: clamp(48px, 6vw, 76px); }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
 }
+
+
+/* Complete repository archive */
+.archive-section { border-top: 1px solid var(--line); }
+.archive-tools { display: grid; grid-template-columns: minmax(220px,.55fr) 1fr; align-items: center; gap: 18px 24px; margin-bottom: 28px; }
+.archive-search { min-height: 48px; padding: 0 15px; display: flex; align-items: center; gap: 11px; border: 1px solid var(--line); background: rgba(255,255,255,.42); }
+.search-mark { color: var(--sage); font-family: var(--serif); font-size: 24px; line-height: 1; }
+.archive-search input { width: 100%; min-width: 0; padding: 12px 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: 11px var(--sans); }
+.archive-search input::placeholder { color: #7f887e; opacity: 1; }
+.archive-search:focus-within { outline: 2px solid var(--sage); outline-offset: 2px; }
+.archive-filters { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 7px; }
+.filter-button { min-height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 99px; background: transparent; color: var(--muted); cursor: pointer; font-size: 9px; font-weight: 600; transition: background 160ms ease,color 160ms ease,border-color 160ms ease; }
+.filter-button:hover { border-color: var(--ink); color: var(--ink); }
+.filter-button.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.filter-button.is-active span { color: var(--lime); }
+.filter-button:focus-visible, .archive-card:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
+.archive-status { grid-column: 1 / -1; margin: -4px 0 0; color: var(--muted); font-size: 10px; }
+.archive-status strong { color: var(--ink); font-family: var(--serif); font-size: 13px; }
+.archive-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; align-items: stretch; }
+.archive-card { min-width: 0; min-height: 244px; padding: 20px 19px 16px; display: flex; flex-direction: column; border: 1px solid var(--line); background: rgba(255,255,255,.3); transition: transform 180ms ease,border-color 180ms ease,background 180ms ease; }
+.archive-card:hover { transform: translateY(-4px); border-color: rgba(24,32,27,.42); background: #f8f7f0; }
+.archive-card[hidden] { display: none !important; }
+.archive-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.archive-index { color: #8b9980; font-family: var(--serif); font-size: 10px; letter-spacing: .08em; }
+.archive-category { color: #76866d; font-size: 7px; font-weight: 700; letter-spacing: .1em; text-align: right; text-transform: uppercase; }
+.archive-card h3 { margin: 26px 0 8px; font-family: var(--serif); font-size: 19px; font-weight: 600; letter-spacing: -.05em; line-height: 1.13; }
+.archive-card p { margin: 0 0 16px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+.archive-repo { margin-top: auto; padding-top: 12px; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); color: #788174; font-size: 8px; line-height: 1.5; overflow-wrap: anywhere; }
+.archive-repo b { flex: 0 0 auto; color: var(--sage); font-size: 13px; font-weight: 500; }
+.repo-state { align-self: flex-start; margin-top: 10px; padding: 5px 8px; border: 1px dashed rgba(250,121,87,.55); color: #a35d4a; font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.archive-card.is-empty { background: rgba(250,121,87,.035); }
+.archive-empty { margin: 23px 0 0; padding: 18px; border: 1px dashed var(--line); color: var(--muted); font-size: 12px; text-align: center; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); border: 0; }
+@media (max-width: 920px) { .archive-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .archive-card { min-height: 235px; } }
+@media (max-width: 640px) { .archive-tools { grid-template-columns: 1fr; gap: 16px; } .archive-filters { justify-content: flex-start; gap: 7px; } .filter-button { padding-inline: 10px; font-size: 8px; } .archive-status { grid-column: auto; margin-top: -5px; } .archive-grid { grid-template-columns: 1fr; gap: 10px; } .archive-card { min-height: 215px; padding: 19px 17px 15px; } .archive-card h3 { margin-top: 22px; } }
